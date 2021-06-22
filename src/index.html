@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My Cookie Clicker v0.1</title>
+        <title>Koffing Clicker v0.1</title>
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
-        <h1 class="page-title">Cookie Clicker</h1>
-        <div class="cookiejar">
-            <input type="image" id="the-cookie" class="cookie" src="../images/koffing.svg" onclick="incrementCounter();" />
+        <h1 class="page-title">Koffing Clicker</h1>
+        <div class="koffing-zone">
+            <input type="image" id="the-koffing" class="cookie" src="../images/koffing.svg" onclick="incrementCounter();" />
         </div>
 
-        <h3 id="click-counter">Cookies: 0</h3>
+        <h3 id="click-counter">Gas: 0</h3>
 
     </body>
-    <script>
-        let count = 0;
-
-        let clicks = document.getElementById('click-counter');
-        let cookieClick = document.getElementById('the-cookie'); // Some jerk on the internet told me to put a . before the-cookie. They lied.
-
-        function incrementCounter() {
-            count++
-            clicks.innerText = "Cookies: " + count;
-        }
-    </script>
+    <script src="./koffing.js"></script>
 </html>
