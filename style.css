@@ -1,0 +1,19 @@
+h1 {
+    color:gray;
+    text-align: center;
+}
+
+h3 {
+    color: red;
+    text-align: center;
+}
+
+button {
+    border: rgb(100, 62, 27) solid 10px;
+    color: black;
+}
+
+.cookiejar {
+    display: flex;
+    justify-content: center;
+}
