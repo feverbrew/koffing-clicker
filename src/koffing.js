@@ -1,5 +1,7 @@
+// Uncomment line below to dev reset collected resources and buildings
+//localStorage.clear();
 // Initialize the gas count from local storage; or if unable to find, with 0
-let gasCount = localStorage.getItem("gasCount") || 0;
+var gasCount = localStorage.getItem("gasCount") || 0;
 
 // Initialize dynamic elements
 let clicks = document.getElementById('click-counter');
@@ -19,7 +21,7 @@ if (document.body.animate) {
 
 // Gas count incrementer (called from the HTML input)
 function incrementCounter() {
-    gasCount++
+    gasCount++;
     clicks.innerText = "Gas: " + gasCount;
     localStorage.setItem("gasCount", gasCount);
 }

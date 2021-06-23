@@ -6,11 +6,24 @@
     </head>
     <body>
         <h1 class="page-title">Koffing Clicker</h1>
-        <div class="koffing-zone">
-            <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" onclick="incrementCounter();" />
-            <h3 id="click-counter">Gas: 0</h3>
-        </div>
 
+        <div class="main-elements">
+            <div class="koffing-zone">
+                <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" onclick="incrementCounter();" />
+                <h3 id="click-counter">Gas: 0</h3>
+            </div>
+
+            <div class="buildings">
+                <button class="koffings building">Koffings: 0</button>
+                <button class="ekans building">Ekans: 0</button>
+            </div>
+
+            <div class="sprites">
+                <div class="koffings sprite"></div>
+                <div class="ekans sprite"></div>
+            </div>
+        </div>
     </body>
     <script src="src/koffing.js"></script>
+    <script src="src/building.js"></script>
 </html>
