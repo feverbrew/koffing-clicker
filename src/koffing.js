@@ -8,6 +8,10 @@ let koffingClick = document.getElementById('the-koffing'); // Some jerk on the i
 // Set gas count
 clicks.innerText = "Gas: " + gasCount;
 
+if (gasCount == 0) {
+    alert("Welcome to Koffing Clicker! Click on Koffing to begin collecting gas.");
+}
+
 // Particle animation driver on click
 if (document.body.animate) {
     koffingClick.addEventListener('click', poof);

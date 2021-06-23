@@ -3,9 +3,9 @@ h1 {
     text-align: center;
 }
 
-h3 {
+#click-counter {
     color: red;
-    text-align: center;
+    padding-left: 30%;
 }
 
 particle {
@@ -23,6 +23,15 @@ particle {
 
 .koffing-zone {
     display: flex;
-    justify-content: center;
+    box-sizing: border-box;
+    width: 25%;
+    height: 75%;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 10%;
     user-select: none;
+}
+
+.koffing {
+    flex: 1, 1, auto;
 }
