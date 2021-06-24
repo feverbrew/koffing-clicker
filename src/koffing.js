@@ -1,5 +1,5 @@
 // Uncomment line below to dev reset collected resources and buildings
-//localStorage.clear();
+localStorage.clear();
 // Initialize the gas count from local storage; or if unable to find, with 0
 var gasCount = localStorage.getItem("gasCount") || 0;
 
@@ -10,6 +10,7 @@ let koffingClick = document.getElementById('the-koffing'); // Some jerk on the i
 // Set gas count
 clicks.innerText = "Gas: " + gasCount;
 
+// New player message
 if (gasCount == 0) {
     alert("Welcome to Koffing Clicker! Click on Koffing to begin collecting gas.");
 }
