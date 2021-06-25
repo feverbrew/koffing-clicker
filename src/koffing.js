@@ -8,7 +8,7 @@ let clicks = document.getElementById('click-counter');
 let koffingClick = document.getElementById('the-koffing'); // Some jerk on the internet told me to put a . before the-koffing. They lied.
 
 // Set gas count
-clicks.innerText = "Gas: " + gasCount;
+clicks.innerText = gasCount + " Gas";
 
 // New player message
 if (gasCount == 0) {
@@ -23,7 +23,7 @@ if (document.body.animate) {
 // Gas count incrementer (called from the HTML input)
 function incrementCounter() {
     gasCount++;
-    clicks.innerText = "Gas: " + gasCount;
+    clicks.innerText = gasCount + " Gas";
     localStorage.setItem("gasCount", gasCount);
 }
 
