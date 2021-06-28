@@ -30,6 +30,7 @@ particle {
     justify-content: flex-start;
     padding-left: 10%;
     user-select: none;
+    order: 1;
 }
 
 .koffing {
@@ -43,6 +44,7 @@ particle {
     height: 75%;
     flex-direction: column;
     align-items: flex-end;
+    order: 4;
 }
 
 .building {
@@ -59,4 +61,22 @@ particle {
 .main-elements {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
+}
+
+.upgrades {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+}
+
+.upgrade {
+    height: 50px;
+    width: 50px;
+}
+
+#upgrades-header {
+    padding-left: 100px;
+    order: 2;
 }
