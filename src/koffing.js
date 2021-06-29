@@ -3,6 +3,8 @@ localStorage.clear();
 // Initialize the gas count from local storage; or if unable to find, with 0
 var gasCount = localStorage.getItem("gasCount") || 0;
 
+gasCount = 200;
+
 // Initialize dynamic elements
 let clicks = document.getElementById('click-counter');
 let koffingClick = document.getElementById('the-koffing'); // Some jerk on the internet told me to put a . before the-koffing. They lied.

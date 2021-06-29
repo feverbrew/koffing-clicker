@@ -1,18 +1,44 @@
 
 // Load upgrades
-const upgrades = localStorage.getItem("upgrades") || [];
+const boughtUpgrades = localStorage.getItem("boughtUpgrades") || [];
 
-const availableUpgrades = ["evolutions"];
 
-evolutionsUpgrade = document.getElementById("evolutions");
-evolutionsUpgrade.addEventListener('click', activateEvolutions());
-
-function activateEvolutions() {
-    if (gasCount > 200 && evolutionsUpgrade) {
-        evolutionsUpgrade.removeEventListener('click', activateEvolutions());
-        document.removeChild(evolutionsUpgrade);
-        evolutionsUpgrade = null;
-        // Figure out how to add events? Otherwise just set a flag here that will allow buildings to upgrade, buildings.js will check this flag on levelth buy
+// TODO: add upgrade descriptions
+class upgrade {
+    constructor(name, cost, icon, bought) {
+        this.name = name;
+        this.cost = cost;
+        this.icon = icon;
+        this.bought = bought;
     }
-    // TODO: else: popup? Something saying not enough gas. Should also add for buildings.
+    buy() {
+        console.log("You bought " + this.name)
+        if (gasCount >= this.cost){
+            this.bought = true;
+            boughtUpgrades.push(this);
+            updateGasCount(-this.cost);
+        }
+    }
+    get status() {
+        return this.bought;
+    }
 }
+
+
+// Should probably eventually make an API or something to fetch upgrades, rather than do what I'm about to do.
+var upgradesAll = [
+    new upgrade("Evolutions", 200, "./images/evolutions_upgrade.png", false),
+    new upgrade("Lumpier Koffing", 100, "./images/lumps.png", false),
+];
+
+var upgradesAvailable = upgradesAll.filter(u => !(boughtUpgrades.includes(u)));
+
+upgradesAvailable.forEach(element => {
+    const u = document.createElement('input');
+    u.type = "image";
+    u.className = "upgrade";
+    u.id = element.name;
+    u.src = element.icon;
+    document.getElementsByClassName("upgrades")[0].appendChild(u);
+    u.addEventListener('click', function() {element.buy()}); // Buy needs to return result of buy (either true or false) and if true then remove the listener and element from the doc
+});
