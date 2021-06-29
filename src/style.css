@@ -49,6 +49,7 @@ particle {
 
 .building {
     display: flex;
+    order: 5;
     border: solid black 2px;
     opacity: 50%;
 }
@@ -61,14 +62,14 @@ particle {
 .main-elements {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
 }
 
 .upgrades {
     order: 3;
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     padding-left: 10px;
+    width: 200px;
 }
 
 .upgrade {
@@ -79,4 +80,8 @@ particle {
 #upgrades-header {
     padding-left: 100px;
     order: 2;
+}
+
+.sprites-zone {
+    order: 6;
 }

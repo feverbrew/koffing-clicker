@@ -3,11 +3,12 @@ localStorage.clear();
 // Initialize the gas count from local storage; or if unable to find, with 0
 var gasCount = localStorage.getItem("gasCount") || 0;
 
-gasCount = 200;
+gasCount = 20000;
 
 // Initialize dynamic elements
 let clicks = document.getElementById('click-counter');
 let koffingClick = document.getElementById('the-koffing'); // Some jerk on the internet told me to put a . before the-koffing. They lied.
+koffingClick.onclick = incrementCounter;
 
 // Set gas count
 clicks.innerText = gasCount + " Gas";
@@ -24,9 +25,20 @@ if (document.body.animate) {
 
 // Gas count incrementer (called from the HTML input)
 function incrementCounter() {
-    gasCount++;
+    gasCount += clickMod();
     clicks.innerText = gasCount + " Gas";
     localStorage.setItem("gasCount", gasCount);
+}
+
+function clickMod() {
+    var n = 0;
+    // Might want to have this be a static number only calculated when a clickmod upgrade is bought, if this ever gets slow because of too many upgrades, its really bad
+    boughtUpgrades.forEach(element => {
+        if (element.cat == "clickmod"){
+            n++;
+        }
+    });
+    return Math.pow( 2 , n);
 }
 
 // Generates particles for the animation at the client's mouse click position

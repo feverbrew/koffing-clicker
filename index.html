@@ -9,7 +9,7 @@
 
         <div class="main-elements">
             <div class="koffing-zone">
-                <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" onclick="incrementCounter();" />
+                <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" />
                 <h3 id="click-counter">Gas: 0</h3>
                 <h4 id="gas-per-second-meter">GPS: 0</h4>
             </div>
@@ -22,13 +22,13 @@
                 <button class="ekans building">Ekans: 0</button>
             </div>
 
-            <div class="sprites">
-                <div class="koffings sprite"></div>
-                <div class="ekans sprite"></div>
+            <div class="sprites-zone">
+                <div class="koffings sprites"><span class="weezing sprites"></span></div>
+                <div class="ekans sprites"></div>
             </div>
         </div>
     </body>
     <script src="src/koffing.js"></script>
-    <script src="src/building.js"></script>
     <script src="src/upgrades.js"></script>
+    <script src="src/building.js"></script>
 </html>
