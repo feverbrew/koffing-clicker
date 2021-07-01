@@ -4,7 +4,7 @@ const boughtUpgrades = localStorage.getItem("boughtUpgrades") || [];
 
 
 // TODO: add upgrade descriptions
-class upgrade {
+class Upgrade {
     constructor(name, cost, icon, category, bought) {
         this.name = name;
         this.cost = cost;
@@ -18,6 +18,7 @@ class upgrade {
             boughtUpgrades.push(this);
             localStorage.setItem("boughtUpgrades", boughtUpgrades);
             updateGasCount(-this.cost);
+            calculateGasPerSecond();
             return true
         }
         else {
@@ -35,10 +36,10 @@ class upgrade {
 
 // Should probably eventually make an API or something to fetch upgrades, rather than do what I'm about to do.
 var upgradesAll = [
-    new upgrade("Evolutions", 200, "./images/evolutions_upgrade.png", "mechanic", false),
-    new upgrade("Lumpier Koffing", 100, "./images/lumps.png", "clickmod", false),
-    new upgrade("Longer Tails", 100, "./images/long_tail.png", "ekansmod", false),
-    new upgrade("Bigger Koffings", 50, "./images/big_koffing.png", "koffingsmod", false),
+    new Upgrade("Evolutions", 200, "./images/evolutions_upgrade.png", "mechanic", false),
+    new Upgrade("Lumpier Koffing", 100, "./images/lumps.png", "clickmod", false),
+    new Upgrade("Longer Tails", 100, "./images/long_tail.png", "Ekansmod", false),
+    new Upgrade("Bigger Koffings", 50, "./images/big_koffing.png", "Koffingsmod", false),
 ];
 
 // Determine which upgrades are available. Could probably do optimization with the bought attribute.

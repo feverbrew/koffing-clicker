@@ -48,8 +48,6 @@ particle {
 }
 
 .building {
-    display: flex;
-    order: 5;
     border: solid black 2px;
     opacity: 50%;
 }
