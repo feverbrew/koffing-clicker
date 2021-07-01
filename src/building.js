@@ -2,11 +2,11 @@
 // Loading building count
 var koffingCount = localStorage.getItem("KoffingsCount") || 0;
 var ekansCount = localStorage.getItem("EkansCount") || 0;
+var meowthCount = localStorage.getItem("MeowthCount") || 0;
+var wobbuffetCount = localStorage.getItem("WobbuffetCount") || 0;
 var weezingCount = localStorage.getItem("WeezingCount") || 0;
 var arbokCount = localStorage.getItem("ArbokCount") || 0;
 
-// Need to decide if I want to calculate GPS per building type in the building class or not. Leaning towards yes, but will decide after more thought.
-// Actually almost certain it will make things easier to integrate the GPS calc into the class, since building count is no longer a global variable.
 class Building {
     constructor(name, count, spriteName, efficiency, baseCost) {
         this.name = name;
@@ -21,7 +21,7 @@ class Building {
     modifiers() {
         let n = 0;
         boughtUpgrades.forEach(element => {
-            if (element.category == this.name+"mod"){
+            if (element.cat == this.name+"mod"){
                 n++;
             }
         });
@@ -60,8 +60,10 @@ class Building {
 // Evolutions class needed here. Is there extend in JS?
 
 const buildings = [
-    new Building("Koffings", koffingCount, "koffings", 0.1, 10),
-    new Building("Ekans", ekansCount, "ekans", 0.5, 25),
+    new Building("Koffings", koffingCount, "koffings", 0.5, 10),
+    new Building("Ekans", ekansCount, "ekans", 1.0, 25),
+    new Building("Meowth", meowthCount, "meowth", 3, 50),
+    new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 10, 150),
 ];
 
 buildings.forEach(building => {
@@ -79,6 +81,23 @@ buildings.forEach(building => {
             calculateGasPerSecond();
         }
     }
+    const gpsHover = document.createElement('gpshover');
+    buyButton.addEventListener("mouseenter", function(e) {
+        x = e.clientX;
+        y = e.clientY;
+        document.body.append(gpsHover);
+        gpsHover.border = `solid black 3px`;
+        let gpsRatio = Math.round(100*building.output/calculateGasPerSecond())
+        gpsHover.innerText = "You have " + building.count + " " + building.name + " making " + building.output + " gas per second!\n This accounts for " + 
+        (gpsRatio ? gpsRatio : 0) + "% of your total GPS";
+        gpsHover.style.position = "absolute";
+        // Eventually would like to get this styling, but need to do more research:
+        //gpsHover.style.left = x+'px';
+        //gpsHover.style.top = y+'px';
+    })
+    buyButton.addEventListener("mouseleave", function() {
+        document.body.removeChild(gpsHover);
+    })
 })
 
 // Setting gas per second

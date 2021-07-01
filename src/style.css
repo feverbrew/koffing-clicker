@@ -50,6 +50,7 @@ particle {
 .building {
     border: solid black 2px;
     opacity: 50%;
+    height: 120px;
 }
 
 .building:hover {
@@ -82,4 +83,8 @@ particle {
 
 .sprites-zone {
     order: 6;
+}
+
+.sprites {
+    height: 120px;
 }

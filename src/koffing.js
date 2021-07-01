@@ -3,7 +3,14 @@ localStorage.clear();
 // Initialize the gas count from local storage; or if unable to find, with 0
 var gasCount = localStorage.getItem("gasCount") || 0;
 
+/* Ok actually this sound is mostly just really annoying and not satisfying, may eventually come back to this with a softer sound, but for now cancelled
+// Import click sound file
+//var clickSound = new Audio("./sounds/poof.wav");
+*/
+
+// Dev gas
 gasCount = 20000;
+
 
 // Initialize dynamic elements
 let clicks = document.getElementById('click-counter');
@@ -27,6 +34,7 @@ if (document.body.animate) {
 function incrementCounter() {
     gasCount += clickMod();
     clicks.innerText = gasCount + " Gas";
+    //clickSound.play();
     localStorage.setItem("gasCount", gasCount);
 }
 
