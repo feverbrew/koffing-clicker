@@ -7,6 +7,7 @@ var wobbuffetCount = localStorage.getItem("WobbuffetCount") || 0;
 var weezingCount = localStorage.getItem("WeezingCount") || 0;
 var arbokCount = localStorage.getItem("ArbokCount") || 0;
 
+// Building class
 class Building {
     constructor(name, count, spriteName, efficiency, baseCost) {
         this.name = name;
