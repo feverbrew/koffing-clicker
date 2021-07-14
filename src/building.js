@@ -83,6 +83,7 @@ buildings.forEach(building => {
         }
     }
     const gpsHover = document.createElement('gpshover');
+    gpsHover.className = "gps-hover";
     buyButton.addEventListener("mouseenter", function(e) {
         x = e.clientX;
         y = e.clientY;

@@ -5,33 +5,37 @@
         <link rel="stylesheet" href="src/style.css">
     </head>
     <body>
-        <h1 class="page-title">Koffing Clicker</h1>
+        <div class="root">
+            <h1 class="page-title"> Koffing Clicker </h1>
 
-        <div class="main-elements">
-            <div class="koffing-zone">
-                <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" />
-                <h3 id="gas-counter">Gas: 0</h3>
-                <h4 id="gas-per-second-meter">GPS: 0</h4>
+            <div class="main-elements">
+                <div class="koffing-zone">
+                    <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" />
+                    <h3 id="gas-counter">Gas: 0</h3>
+                    <h4 id="gas-per-second-meter">GPS: 0</h4>
+                </div>
+
+                
+                <div class="upgrades">
+                    <h3 id="upgrades-header">Upgrades</h3>
+                </div>
+
+                <div class="buildings"></div>
+
+                <div class="sprites-zone">
+                    <div class="koffings sprites"><span class="weezing sprites"></span></div>
+                    <div class="ekans sprites"></div>
+                    <div class="meowth sprites"></div>
+                    <div class="wobbuffet sprites"></div>
+                </div>
             </div>
-
-            <h3 id="upgrades-header">Upgrades</h3>
-            <div class="upgrades"></div>
-
-            <div class="buildings"></div>
-
-            <div class="sprites-zone">
-                <div class="koffings sprites"><span class="weezing sprites"></span></div>
-                <div class="ekans sprites"></div>
-                <div class="meowth sprites"></div>
-                <div class="wobbuffet sprites"></div>
+            <div class="achievements marquee"></div>
+            <div class="settings menu">
+                <button id="open-settings" class="open settings">Settings</button>
             </div>
-        </div>
-        <div class="achievements marquee"></div>
-        <div class="settings menu">
-            <button id="open-settings" class="open settings">Settings</button>
-        </div>
-        <div id="snackbar">
-            Game Saved
+            <div id="snackbar">
+                Game Saved
+            </div>
         </div>
     </body>
     <script src="src/koffing.js"></script>
