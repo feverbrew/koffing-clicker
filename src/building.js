@@ -1,11 +1,11 @@
 
 // Loading building count
-var koffingCount = localStorage.getItem("KoffingsCount") || 0;
-var ekansCount = localStorage.getItem("EkansCount") || 0;
-var meowthCount = localStorage.getItem("MeowthCount") || 0;
-var wobbuffetCount = localStorage.getItem("WobbuffetCount") || 0;
-var weezingCount = localStorage.getItem("WeezingCount") || 0;
-var arbokCount = localStorage.getItem("ArbokCount") || 0;
+var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
+var ekansCount = parseInt(localStorage.getItem("EkansCount")) || 0;
+var meowthCount = parseInt(localStorage.getItem("MeowthCount")) || 0;
+var wobbuffetCount = parseInt(localStorage.getItem("WobbuffetCount")) || 0;
+var weezingCount = parseInt(localStorage.getItem("WeezingCount")) || 0;
+var arbokCount = parseInt(localStorage.getItem("ArbokCount")) || 0;
 
 // Building class
 class Building {
@@ -36,9 +36,9 @@ class Building {
     }
     buy() {
         if (gasCount >= this.calcCost()){
-            this.count += 1;
             updateGasCount(-this.calcCost());
-            localStorage.setItem(this.name + "Count",this.count);
+            this.count += 1;
+            //localStorage.setItem(this.name + "Count",this.count);
             return true;
         }
         else {
@@ -111,18 +111,17 @@ var interval1 = setInterval(gasPerSecond, 1000);
 
 // Adds the passed gas per second to the gas count
 function gasPerSecond() {
-    GPS = calculateGasPerSecond();
+    var GPS = calculateGasPerSecond();
     gasCount += GPS;
-    gasCount = Math.round(gasCount*10)/10;
-    clicks.innerText = gasCount + " Gas";
-    localStorage.setItem("gasCount", gasCount);
+    gasCount = Math.round(gasCount*100)/100;
+    gas.innerText = gasCount + " Gas";
     GPS = Math.round(GPS*100)/100;
     gasPerSecondMeter.innerText = "GPS: " + GPS;
 }
 
 // Calculates the current gas per second, stores it in GPS, and returns GPS
 function calculateGasPerSecond() {
-    GPS = 0
+    var GPS = 0
     buildings.forEach( building => {
         GPS += building.output;
     })
@@ -133,6 +132,6 @@ function calculateGasPerSecond() {
 
 function updateGasCount(value) {
     gasCount += value;
-    gasCount = Math.round(gasCount*10)/10;
-    clicks.innerText = gasCount + " Gas";
+    gasCount = Math.round(gasCount*100)/100;
+    gas.innerText = gasCount + " Gas";
 }
