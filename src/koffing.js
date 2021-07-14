@@ -1,7 +1,8 @@
-// Uncomment line below to dev reset collected resources and buildings
-localStorage.clear();
+
 // Initialize the gas count from local storage; or if unable to find, with 0
-var gasCount = localStorage.getItem("gasCount") || 0;
+var gasCount = parseInt(localStorage.getItem("gasCount")) || 0;
+var clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
+
 
 /* Ok actually this sound is mostly just really annoying and not satisfying, may eventually come back to this with a softer sound, but for now cancelled
 // Import click sound file
@@ -9,16 +10,16 @@ var gasCount = localStorage.getItem("gasCount") || 0;
 */
 
 // Dev gas
-gasCount = 20000;
+//gasCount = 20000;
 
 
 // Initialize dynamic elements
-let clicks = document.getElementById('click-counter');
+let gas = document.getElementById('gas-counter');
 let koffingClick = document.getElementById('the-koffing'); // Some jerk on the internet told me to put a . before the-koffing. They lied.
 koffingClick.onclick = incrementCounter;
 
 // Set gas count
-clicks.innerText = gasCount + " Gas";
+gas.innerText = gasCount + " Gas";
 
 // New player message
 if (gasCount == 0) {
@@ -33,9 +34,9 @@ if (document.body.animate) {
 // Gas count incrementer (called from the HTML input)
 function incrementCounter() {
     gasCount += clickMod();
-    clicks.innerText = gasCount + " Gas";
+    clickCount++;
+    gas.innerText = gasCount + " Gas";
     //clickSound.play();
-    localStorage.setItem("gasCount", gasCount);
 }
 
 function clickMod() {

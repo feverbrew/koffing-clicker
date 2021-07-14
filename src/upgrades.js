@@ -4,6 +4,7 @@ const boughtUpgrades = localStorage.getItem("boughtUpgrades") || [];
 
 
 // TODO: add upgrade descriptions
+// Upgrade class
 class Upgrade {
     constructor(name, cost, icon, category, bought) {
         this.name = name;
@@ -45,6 +46,7 @@ var upgradesAll = [
 // Determine which upgrades are available. Could probably do optimization with the bought attribute.
 var upgradesAvailable = upgradesAll.filter(u => !(boughtUpgrades.includes(u)));
 
+// Draws the upgrades on the screen and sets the function to delete them when bought
 upgradesAvailable.forEach(element => {
     const u = document.createElement('input');
     u.type = "image";

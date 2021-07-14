@@ -10,7 +10,7 @@
         <div class="main-elements">
             <div class="koffing-zone">
                 <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" />
-                <h3 id="click-counter">Gas: 0</h3>
+                <h3 id="gas-counter">Gas: 0</h3>
                 <h4 id="gas-per-second-meter">GPS: 0</h4>
             </div>
 
@@ -26,8 +26,17 @@
                 <div class="wobbuffet sprites"></div>
             </div>
         </div>
+        <div class="achievements marquee"></div>
+        <div class="settings menu">
+            <button id="open-settings" class="open settings">Settings</button>
+        </div>
+        <div id="snackbar">
+            Game Saved
+        </div>
     </body>
     <script src="src/koffing.js"></script>
     <script src="src/upgrades.js"></script>
     <script src="src/building.js"></script>
+    <script src="src/achievement.js"></script>
+    <script src="src/settings.js"></script>
 </html>
