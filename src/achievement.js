@@ -1,16 +1,20 @@
 
 // Achievement class
 class Achievement {
-    constructor(name, text, checkfunction, isAchieved = false) {
+    constructor(name, text, checkfunction, special = null, isAchieved = false) {
         this.name = name;
         this.text = text;
         this.checkfunction = checkfunction;
+        this.special = special;
         this.isAchieved = localStorage.getItem(this.name);
     }
     achieve() {
         if (this.isAchieved === false && this.checkfunction()){
             this.isAchieved = true;
             achievementPopup(this.name,this.text);
+            if (this.special){
+                this.special()
+            }
             return true;
         }
     }
@@ -24,6 +28,8 @@ const achievements = [
     new Achievement("1000 Gas", "You've made 1000 gas!",
         function() {
             return gasCount > 1000;
+        },function(){
+            document.body.style.animation = "pollute 5s";
         }),
     new Achievement("1st Koffing", "You bought a Koffing!",
         function() {
