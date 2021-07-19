@@ -21,11 +21,13 @@ class Building {
     }
     modifiers() {
         let n = 0;
-        boughtUpgrades.forEach(element => {
-            if (element.cat == this.name+"mod"){
-                n++;
-            }
-        });
+        if (boughtUpgrades.length>0){
+            boughtUpgrades.forEach(element => {
+                if (element.cat == this.name+"mod"){
+                    n++;
+                }
+            });
+        }
         return Math.pow( 2 , n);
     }
     get output() {
@@ -38,7 +40,6 @@ class Building {
         if (gasCount >= this.calcCost()){
             updateGasCount(-this.calcCost());
             this.count += 1;
-            //localStorage.setItem(this.name + "Count",this.count);
             return true;
         }
         else {
@@ -104,11 +105,30 @@ buildings.forEach(building => {
 
 // Setting gas per second
 gasPerSecondMeter = document.getElementById("gas-per-second-meter");
+
+// Load current background color
+var bgColor = localStorage.getItem("bgColor") || '#00b7ff';
+bgAnimation();
+
 var GPS = calculateGasPerSecond();
 gasPerSecondMeter.innerText = "GPS: " + GPS;
 
 // Gas over time ticker
 var interval1 = setInterval(gasPerSecond, 1000);
+
+
+function bgAnimation() {
+    if (document.body.animate){
+        document.body.animate([
+                { backgroundColor: bgColor },
+                { backgroundColor: '#a59716' }
+            ],  {
+                duration: 10000000/calculateGasPerSecond(),
+                fill: "both"
+            }
+        );
+    }
+}
 
 // Adds the passed gas per second to the gas count
 function gasPerSecond() {
@@ -118,6 +138,8 @@ function gasPerSecond() {
     gas.innerText = gasCount + " Gas";
     GPS = Math.round(GPS*100)/100;
     gasPerSecondMeter.innerText = "GPS: " + GPS;
+    bgColor = window.getComputedStyle(document.body,null).getPropertyValue('background-color');
+    if (bgColor != '#a59716') {bgAnimation();}
 }
 
 // Calculates the current gas per second, stores it in GPS, and returns GPS

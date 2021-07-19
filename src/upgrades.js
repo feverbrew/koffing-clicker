@@ -1,7 +1,10 @@
 
 // Load upgrades
-const boughtUpgrades = localStorage.getItem("boughtUpgrades") || [];
+var boughtUpgrades = localStorage.getItem("boughtUpgrades") || [];
 
+if (boughtUpgrades.length > 0) {
+    boughtUpgrades = boughtUpgrades.split(",")
+}
 
 // TODO: add upgrade descriptions
 // Upgrade class
@@ -17,7 +20,7 @@ class Upgrade {
     buy() {
         if (gasCount >= this.cost){
             this.bought = true;
-            boughtUpgrades.push(this);
+            boughtUpgrades.push(this.name);
             localStorage.setItem("boughtUpgrades", boughtUpgrades);
             updateGasCount(-this.cost);
             calculateGasPerSecond();
@@ -45,12 +48,19 @@ var upgradesAll = [
 ];
 
 // Determine which upgrades are available. Could probably do optimization with the bought attribute.
-var upgradesAvailable = upgradesAll.filter(u => !(boughtUpgrades.includes(u)));
+var upgradesAvailable = upgradesAll.filter(u => !(boughtUpgrades.includes(u.name)));
+
+/* Initializes the function that finds mouse position (for the upgrade hover)
+const mousePosition = new Event('mousePos');
+window.onmousemove = function (e) {
+    window.dispatchEvent(mousePosition);
+} */
 
 // Draws the upgrades on the screen and sets the function to delete them when bought
 upgradesAvailable.forEach(element => {
     const d = document.createElement('div');
-    d.className = "upgrade-zone"
+    d.className = "upgrade-zone";
+    d.id = element.name + "upgradezone";
     document.getElementsByClassName("upgrades")[0].appendChild(d);
 
     const u = document.createElement('input');
@@ -70,10 +80,6 @@ upgradesAvailable.forEach(element => {
     d.appendChild(tipContainer);
     tipContainer.appendChild(tip);
 
-    window.onmousemove = function (e) {
-        tipContainer.style.top = (e.clientY + 20) + 'px';
-        tipContainer.style.left = (e.clientX + 20) + 'px';
-    }
     u.onclick = function() {
         if (element.buy()){
             tip.remove();
@@ -82,3 +88,11 @@ upgradesAvailable.forEach(element => {
         }
     };
 });
+
+
+/* document.getElementsByClassName("upgrade-info").forEach( i => {
+    i.onmousemove = function(e) {
+        i.style.left = e.clientX + 20 + 'px';
+        i.style.top = e.clientY + 20 + 'px';
+    }
+}) */

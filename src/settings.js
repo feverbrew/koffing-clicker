@@ -45,6 +45,7 @@ function saveData() {
     buildings.forEach( b => {
         localStorage.setItem(b.name+"Count",b.count);
     });
+    localStorage.setItem("bgColor", window.getComputedStyle(document.body,null).getPropertyValue('background-color'));
     var savepopup = document.getElementById("snackbar");
     savepopup.className = "show";
     setTimeout(function(){ savepopup.className = savepopup.className.replace("show", "");}, 3000);

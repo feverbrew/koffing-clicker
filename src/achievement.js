@@ -1,15 +1,15 @@
 
 // Achievement class
 class Achievement {
-    constructor(name, text, checkfunction, special = null, isAchieved = false) {
+    constructor(name, text, checkfunction, special = null, isAchieved = 0) {
         this.name = name;
         this.text = text;
         this.checkfunction = checkfunction;
         this.special = special;
-        this.isAchieved = localStorage.getItem(this.name);
+        this.isAchieved = parseInt(localStorage.getItem(this.name));
     }
     achieve() {
-        if (this.isAchieved === false && this.checkfunction()){
+        if (!this.isAchieved && this.checkfunction()){
             this.isAchieved = true;
             achievementPopup(this.name,this.text);
             if (this.special){
@@ -28,12 +28,12 @@ const achievements = [
     new Achievement("1000 Gas", "You've made 1000 gas!",
         function() {
             return gasCount > 1000;
-        },function(){
-            document.body.style.animation = "pollute 5s";
         }),
-    new Achievement("1st Koffing", "You bought a Koffing!",
+    new Achievement("1st Building", "You bought a building!",
         function() {
-            return localStorage.getItem("KoffingsCount") > 0;
+            return buildings.some( b => {
+                return b.count > 0;
+            });
         }),
     new Achievement("1st Upgrade", "You bought an upgrade!",
         function() {
@@ -44,12 +44,13 @@ const achievements = [
 function checkAchievements() {
     achievements.forEach( ach => {
         if (ach.achieve()) {
-            localStorage.setItem(ach.name, true);
+            localStorage.setItem(ach.name, 1);
         }
+        //console.log(ach.isAchieved);
     })
 }
 
-const achievementTimer = window.setInterval(checkAchievements, 500);
+const achievementTimer = setInterval(checkAchievements, 500);
 
 
 function achievementPopup(name,text) {
