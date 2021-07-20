@@ -19,7 +19,7 @@ let koffingClick = document.getElementById('the-koffing'); // Some jerk on the i
 koffingClick.onclick = incrementCounter;
 
 // Set gas count
-gas.innerText = gasCount + " Gas";
+gas.innerText = gasCount;
 
 // New player message
 if (gasCount == 0) {
@@ -35,15 +35,14 @@ if (document.body.animate) {
 function incrementCounter() {
     gasCount += clickMod();
     clickCount++;
-    gas.innerText = gasCount + " Gas";
-    //clickSound.play();
+    gas.innerText = gasCount;
 }
 
+// Calculates any click modifiers from bought upgrades
 function clickMod() {
     var n = 0;
-    // Might want to have this be a static number only calculated when a clickmod upgrade is bought, if this ever gets slow because of too many upgrades, its really bad
-    boughtUpgrades.forEach(element => {
-        if (element.cat == "clickmod"){
+    upgradesAll.forEach(element => {
+        if (element.status && element.cat == "clickmod"){
             n++;
         }
     });

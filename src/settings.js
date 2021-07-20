@@ -39,17 +39,21 @@ document.getElementById('open-settings').onclick = function() {
     }
 }
 
+// Saves the game state
 function saveData() {
     localStorage.setItem("gasCount", gasCount);
     localStorage.setItem("clickCount", clickCount);
     buildings.forEach( b => {
         localStorage.setItem(b.name+"Count",b.count);
     });
+    localStorage.setItem("bgColor", window.getComputedStyle(document.body,null).getPropertyValue('background-color'));
+    localStorage.setItem("evolutions", EVOLUTIONS);
     var savepopup = document.getElementById("snackbar");
     savepopup.className = "show";
     setTimeout(function(){ savepopup.className = savepopup.className.replace("show", "");}, 3000);
 }
 
+// Deletes save data
 function clearLocalStorage() {
     if (confirm("Are you sure you want to delete your save data?")){
         localStorage.clear();
@@ -57,6 +61,7 @@ function clearLocalStorage() {
     }
 }
 
+// Turns the autosave feature off/on
 function toggleAutosave() {
     if (autosave){
         autosave = clearInterval(autosave);
