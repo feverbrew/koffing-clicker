@@ -55,9 +55,10 @@ const achievementTimer = setInterval(checkAchievements, 500);
 // Activates the achievement marquee with the achievement info
 // Marquee is removed once the animation finishes
 function achievementPopup(name,text) {
-    popup = document.createElement('span');
+    const popup = document.createElement('span');
     popup.className = "achievement marquee" + name;
     popup.innerText = "Achievement Unlocked: " + text;
-    document.getElementsByClassName("achievements")[0].appendChild(popup);
-    setTimeout(function(){document.getElementsByClassName("achievements")[0].removeChild(popup)} , 15000)
+    let marqueeLine = document.getElementsByClassName("achievements")[0];
+    marqueeLine.appendChild(popup);
+    setTimeout(function(){marqueeLine.removeChild(popup)} , 15000)
 }
