@@ -3,16 +3,6 @@
 var gasCount = parseInt(localStorage.getItem("gasCount")) || 0;
 var clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
 
-
-/* Ok actually this sound is mostly just really annoying and not satisfying, may eventually come back to this with a softer sound, but for now cancelled
-// Import click sound file
-//var clickSound = new Audio("./sounds/poof.wav");
-*/
-
-// Dev gas
-gasCount = 20000;
-
-
 // Initialize dynamic elements
 let gas = document.getElementById('gas-counter');
 let koffingClick = document.getElementById('the-koffing'); // Some jerk on the internet told me to put a . before the-koffing. They lied.

@@ -62,7 +62,6 @@ class Building {
     }
     deleteSprite() {
         let container = document.getElementsByClassName(this.spriteName + " sprites")[0];
-        //let child = document.getElementsByClassName(this.spriteName + " sprite")[0];
         container.lastElementChild.remove();
     }
     evolve() {
@@ -80,6 +79,7 @@ class Building {
     }
 }
 
+// Initialize buildings
 const buildings = [
     new Building("Koffings", koffingCount, "koffings", 0.5, 10, "weezing", 35, weezingCount),
     new Building("Ekans", ekansCount, "ekans", 1.0, 25, "arbok", 22, arbokCount),
@@ -115,16 +115,11 @@ buildings.forEach(building => {
     }
     const gpsHover = document.createElement('gpshover');
     gpsHover.className = "gps-hover";
-    // Could clean up this event listener, as it is only creating a hover effect right now.
     buyButton.addEventListener("mouseenter", function(e) {
-        x = e.clientX;
-        y = e.clientY;
         document.body.append(gpsHover);
-        gpsHover.border = `solid black 3px`;
         let gpsRatio = Math.round(100*building.output/calculateGasPerSecond())
         gpsHover.innerText = "You have " + building.count + " " + building.name + " making " + building.output + " gas per second!\n This accounts for " + 
         (gpsRatio ? gpsRatio : 0) + "% of your total GPS";
-        gpsHover.style.position = "absolute";
         // May or may not change this styling to the upgrade hover styling. Kinda like how it currently is, at least until the page gets busier
     })
     buyButton.addEventListener("mouseleave", function() {
@@ -191,6 +186,7 @@ function updateGasCount(value) {
     gas.innerText = gasCount;
 }
 
+// Text wave animation when GPS "changes"
 function animateGPSMeter() {
     gasPerSecondMeterLabel = document.getElementById("gas-per-second-meter-label");
     gasPerSecondMeterLabel.classList.add("wave-text-class");

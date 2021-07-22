@@ -96,6 +96,7 @@ upgradesAvailable.forEach(element => {
     };
 });
 
+// Special function to allow evolving when the evolution upgrade is bought
 function activateEvolutions() {
     EVOLUTIONS = 1;
     buildings.forEach( b => {
