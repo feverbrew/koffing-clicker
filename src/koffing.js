@@ -1,14 +1,15 @@
-// Uncomment line below to dev reset collected resources and buildings
-localStorage.clear();
+
 // Initialize the gas count from local storage; or if unable to find, with 0
-var gasCount = localStorage.getItem("gasCount") || 0;
+var gasCount = parseInt(localStorage.getItem("gasCount")) || 0;
+var clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
 
 // Initialize dynamic elements
-let clicks = document.getElementById('click-counter');
+let gas = document.getElementById('gas-counter');
 let koffingClick = document.getElementById('the-koffing'); // Some jerk on the internet told me to put a . before the-koffing. They lied.
+koffingClick.onclick = incrementCounter;
 
 // Set gas count
-clicks.innerText = "Gas: " + gasCount;
+gas.innerText = gasCount;
 
 // New player message
 if (gasCount == 0) {
@@ -22,9 +23,20 @@ if (document.body.animate) {
 
 // Gas count incrementer (called from the HTML input)
 function incrementCounter() {
-    gasCount++;
-    clicks.innerText = "Gas: " + gasCount;
-    localStorage.setItem("gasCount", gasCount);
+    gasCount += clickMod();
+    clickCount++;
+    gas.innerText = gasCount;
+}
+
+// Calculates any click modifiers from bought upgrades
+function clickMod() {
+    var n = 0;
+    upgradesAll.forEach(element => {
+        if (element.status && element.cat == "clickmod"){
+            n++;
+        }
+    });
+    return Math.pow( 2 , n);
 }
 
 // Generates particles for the animation at the client's mouse click position
