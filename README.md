@@ -12,10 +12,10 @@ This project was inspired by [Cookie Clicker](https://orteil.dashnet.org/cookiec
 - Buy buildings to idly collect gas.
 - Buy upgrades to make gas collection faster.
 - Settings menu with save data management.
+- Evolutions!
 
 ## Future Plans
 - "Story": have some kind of plotline in the game that progresses as you click.
-- Evolutions: while this upgrade is technically available, it doesn't do anything yet. Working on this next!
 - Generation Sprite Options: Allow you to choose which gen Koffings and friends you want to see.
 - Other forms :eyes:
 - More UI, ability to see achievements and upgrades you've unlocked.
