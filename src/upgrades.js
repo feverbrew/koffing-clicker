@@ -97,13 +97,10 @@ upgradesAvailable.forEach(element => {
 });
 
 function activateEvolutions() {
-    if (koffingCount>=35){
-        weezingCount += koffingCount/35;
-        koffingCount = koffingCount%35;
-    }
-    if (ekansCount>=22){
-        arbokCount += ekansCount/35;
-        ekansCount = ekansCount%35;
-    }
     EVOLUTIONS = 1;
+    buildings.forEach( b => {
+        if (b.evolvesInto && b.count >= b.evolvesAt){
+            b.evolve()
+        }
+    })
 }

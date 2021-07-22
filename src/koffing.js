@@ -10,7 +10,7 @@ var clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
 */
 
 // Dev gas
-//gasCount = 20000;
+gasCount = 20000;
 
 
 // Initialize dynamic elements

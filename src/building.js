@@ -4,12 +4,12 @@ var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
 var ekansCount = parseInt(localStorage.getItem("EkansCount")) || 0;
 var meowthCount = parseInt(localStorage.getItem("MeowthCount")) || 0;
 var wobbuffetCount = parseInt(localStorage.getItem("WobbuffetCount")) || 0;
-var weezingCount = parseInt(localStorage.getItem("WeezingCount")) || 0;
-var arbokCount = parseInt(localStorage.getItem("ArbokCount")) || 0;
+var weezingCount = parseInt(localStorage.getItem("weezingCount")) || 0;
+var arbokCount = parseInt(localStorage.getItem("arbokCount")) || 0;
 
 // Building class
 class Building {
-    constructor(name, count, spriteName, efficiency, baseCost, evolvesInto, evolvesAt) {
+    constructor(name, count, spriteName, efficiency, baseCost, evolvesInto, evolvesAt, evoCount) {
         this.name = name;
         this.count = count;
         this.spriteName = spriteName;
@@ -17,6 +17,7 @@ class Building {
         this.baseCost = baseCost;
         this.evolvesInto = evolvesInto;
         this.evolvesAt = evolvesAt;
+        this.evoCount = evoCount;
     }
     get cost() {
         return this.calcCost();
@@ -33,7 +34,7 @@ class Building {
         return Math.pow( 2 , n);
     }
     get output() {
-        return this.count * this.efficiency * this.modifiers();
+        return Math.round( (this.count * this.efficiency * this.modifiers() + this.evoCount * this.count * 0.4)*100 )/100;
     }
     calcCost() {
         return Math.round(this.baseCost * Math.pow(1.2, this.count) );
@@ -41,10 +42,11 @@ class Building {
     buy() {
         if (gasCount >= this.calcCost()){
             updateGasCount(-this.calcCost());
+            this.createSprite();
             this.count += 1;
-            /* if (EVOLUTIONS && this.evolvesInto && this.count >= evolvesAt){
+            if (EVOLUTIONS && this.evolvesInto && (this.count - this.evolvesAt*this.evoCount >= this.evolvesAt)){
                 this.evolve();
-            } */
+            }
             return true;
         }
         else {
@@ -53,40 +55,38 @@ class Building {
     }
     createSprite() {
         const sprite = document.createElement('img');
-        sprite.src = `./images/`+this.spriteName+`.png`;
+        sprite.src = `./images/${this.spriteName}.png`;
         sprite.alt = this.spriteName;
         sprite.className = this.spriteName + " sprite";
         document.getElementsByClassName(this.spriteName + " sprites")[0].appendChild(sprite);
     }
     deleteSprite() {
-        child = document.getElementsByClassName(this.spriteName + " sprite")[0];
-        document.getElementsByClassName(this.spriteName + " sprites")[0].removeChild(child);
+        let container = document.getElementsByClassName(this.spriteName + " sprites")[0];
+        //let child = document.getElementsByClassName(this.spriteName + " sprite")[0];
+        container.lastElementChild.remove();
     }
-    /* evolve() {
-            for (let i=0; i<35; i++){
+    evolve() {
+            for (let i=0; i<this.evolvesAt; i++){
                 this.deleteSprite();
             }
-            evo = evolutions.filter( this.name == this.evolvesInto)[0];
-            if (evo.buy()){
-                if (evo.count==1){
-                    document.getElementsByClassName(evo.spriteName+" sprites")[0].style.display = "block";
-                }
-                evo.createSprite()
-            }
-    } */
+            const evoSprite = document.createElement('img');
+            evoSprite.src = `./images/${this.evolvesInto}.png`;
+            evoSprite.alt = this.evolvesInto;
+            evoSprite.className = this.evolvesInto + " evoSprite sprite";
+            let container = document.getElementsByClassName(this.spriteName + " sprites")[0];
+            container.insertBefore(evoSprite,container.firstChild);
+            this.evoCount += 1;
+            localStorage.setItem(this.evolvesInto+"Count", this.evoCount);
+    }
 }
 
 const buildings = [
-    new Building("Koffings", koffingCount, "koffings", 0.5, 10, "Weezing", 35),
-    new Building("Ekans", ekansCount, "ekans", 1.0, 25, "Arbok", 22),
-    new Building("Meowth", meowthCount, "meowth", 3, 50, null, null),
-    new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 10, 150, null, null),
+    new Building("Koffings", koffingCount, "koffings", 0.5, 10, "weezing", 35, weezingCount),
+    new Building("Ekans", ekansCount, "ekans", 1.0, 25, "arbok", 22, arbokCount),
+    new Building("Meowth", meowthCount, "meowth", 3, 50, null, null, 0),
+    new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 10, 150, null, null, 0),
 ];
 
-/* const evolutions = [
-    new Building("Weezing", weezingCount, "weezing", 40, 0, null, null),
-    new Building("Arbok", arbokCount, "arbok", 25, 0, null, null),
-] */
 
 // Creates the building buttons
 // Buttons display stats on hover and when clicked will attempt to buy one building (and create a sprite if successful)
@@ -95,12 +95,19 @@ buildings.forEach(building => {
     buyButton.className = building.name + " building";
     buyButton.innerText = building.name + ": " + building.count + "\nCost: " + building.cost + " Gas";
     document.getElementsByClassName("buildings")[0].appendChild(buyButton);
-    for (let i = 0; i < building.count; i++) {
+    for (let i = 0; i< building.evoCount; i++) {
+        const evoSprite = document.createElement('img');
+        evoSprite.src = `./images/${building.evolvesInto}.png`;
+        evoSprite.alt = building.evolvesInto;
+        evoSprite.className = building.evolvesInto + " evoSprite sprite";
+        let container = document.getElementsByClassName(building.spriteName + " sprites")[0];
+        container.insertBefore(evoSprite,container.firstChild);
+    }
+    for (let i = 0; i < building.count - building.evolvesAt*building.evoCount; i++) {
         building.createSprite();
     }
     buyButton.onclick = function() {
         if (building.buy()){
-            building.createSprite();
             buyButton.innerText = building.name + ": " + building.count + "\nCost: " + building.cost + " Gas";
             calculateGasPerSecond();
             animateGPSMeter();
@@ -172,11 +179,6 @@ function calculateGasPerSecond() {
     buildings.forEach( building => {
         GPS += building.output;
     })
-    /* if (EVOLUTIONS){
-        evolutions.forEach( evolution => {
-            GPS += evolution.output;
-        })
-    } */
     GPS = Math.round(GPS*100)/100;
     gasPerSecondMeter.innerText = GPS;
     return GPS;
