@@ -101,7 +101,7 @@ const upgradesAll = [
     new Upgrade("Evolutions", 200, "./images/evolutions_upgrade.png", "Allows Koffings and Ekans to evolve.", "<i>These guys needed some extra encouragement.</i>", "evolve1", false,
                 function(){return (koffingCount >= 10 && ekansCount >= 10)}
                 ),
-    new Upgrade("Lumpier Koffing", 100, "./images/lumps.png", "Clicking Koffing is <span class='description-emph'>twice</span> as effective.", "<i>Gives Koffing twice as many lumps to make gas with.</i>", "clickmod", false,
+    new Upgrade("Lumpier Koffing", 100, "./images/lumps.png", "Clicking Koffing is <span class='description-emph'>twice</span> as effective.", "<i>Gives Koffing twice as many lumps to pump out gas with.</i>", "clickmod", false,
                 function(){return (clickCount >= 100)}
                 ),
     new Upgrade("Longer Tails", 100, "./images/long_tail.png", "Ekans produce <span class='description-emph'>twice</span> as much gas.", "<i>Ekans get longer tails to... fan the gas with?</i>", "Ekansmod", false,
@@ -109,6 +109,21 @@ const upgradesAll = [
                 ),
     new Upgrade("Bigger Koffings", 50, "./images/big_koffing.png", "Koffings produce <span class='description-emph'>twice</span> as much gas.", "<i>Makes your little Koffings a little bit bigger.</i>","Koffingsmod", false,
                 function(){return (koffingCount >= 10)}
+                ),
+    new Upgrade("More Teeth", 500, "./images/koffing_teeth.png", "Koffings produce <span class='description-emph'>twice</span> as much gas.", "<i>More teeth means faster eating; which means more gas.</i>","Koffingsmod", false,
+                function(){return (koffingCount >= 25)}
+                ),
+    new Upgrade("Longer Bodies", 1000, "./images/long_body.png", "Ekans produce <span class='description-emph'>twice</span> as much gas.", "<i>Definitely not the same as longer tails.</i>","Ekansmod", false,
+                function(){return (ekansCount >= 25)}
+                ),
+    new Upgrade("Fresher Clicks", 1500, "./images/cursor.png", "Clicking Koffing is <span class='description-emph'>twice</span> as effective.", "<i>Research suggests that the fresher the clicks, the more gas Koffing will produce.</i>","clickmod", false,
+                function(){return (clickCount >= 500)}
+                ),
+    new Upgrade("Shinier Coin", 2000, "./images/coin.png", "Meowths produce <span class='description-emph'>twice</span> as much gas.", "<i>Meowths are usually only motivated by greed, but a coin touch up might work.</i>","Meowthmod", false,
+                function(){return (meowthCount >= 10)}
+                ),
+    new Upgrade("Salute", 5000, "./images/salute.png", "Wobbuffets produce <span class='description-emph'>twice</span> as much gas.", "<i>A simple salute improved morale twofold.</i>","Wobbuffetmod", false,
+                function(){return (wobbuffetCount >= 10)}
                 ),
 ];
 
