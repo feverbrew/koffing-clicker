@@ -1,12 +1,4 @@
 
-// Loading building count
-var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
-var ekansCount = parseInt(localStorage.getItem("EkansCount")) || 0;
-var meowthCount = parseInt(localStorage.getItem("MeowthCount")) || 0;
-var wobbuffetCount = parseInt(localStorage.getItem("WobbuffetCount")) || 0;
-var weezingCount = parseInt(localStorage.getItem("weezingCount")) || 0;
-var arbokCount = parseInt(localStorage.getItem("arbokCount")) || 0;
-
 // Building class
 class Building {
     constructor(name, count, spriteName, efficiency, baseCost, evolvesInto, evolvesAt, evoCount) {
@@ -44,6 +36,7 @@ class Building {
             updateGasCount(-this.calcCost());
             this.createSprite();
             this.count += 1;
+            window[`${this.spriteName}Count`] = this.count;
             if (EVOLUTIONS && this.evolvesInto && (this.count - this.evolvesAt*this.evoCount >= this.evolvesAt)){
                 this.evolve();
             }
@@ -81,10 +74,10 @@ class Building {
 
 // Initialize buildings
 const buildings = [
-    new Building("Koffings", koffingCount, "koffings", 0.5, 10, "weezing", 35, weezingCount),
-    new Building("Ekans", ekansCount, "ekans", 1.0, 25, "arbok", 22, arbokCount),
-    new Building("Meowth", meowthCount, "meowth", 3, 50, null, null, 0),
-    new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 10, 150, null, null, 0),
+    new Building("Koffings", koffingCount, "koffing", 0.5, 10, "weezing", 35, weezingCount),
+    new Building("Ekans", ekansCount, "ekans", 1.0, 50, "arbok", 22, arbokCount),
+    new Building("Meowth", meowthCount, "meowth", 3, 100, null, null, 0),
+    new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 10, 300, null, null, 0),
 ];
 
 

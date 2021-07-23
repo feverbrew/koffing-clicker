@@ -61,7 +61,7 @@ particle {
     opacity: 0;
 }
 
-.koffing:active {
+.cookie:active {
     transform: scale(0.98);
 }
 
@@ -77,7 +77,7 @@ particle {
     order: 1;
 }
 
-.koffing {
+.cookie {
     flex: 1, 1, auto;
 }
 
@@ -128,13 +128,13 @@ particle {
     margin: 2px;
 }
 
-.upgrade-zone span{
+.upgrade-zone .upgrade-info{
     text-decoration: none;
     position: relative;
     display: none;
 }
 
-.upgrade-zone:hover span{
+.upgrade-zone:hover .upgrade-info{
     display: block;
     position: fixed;
     overflow: hidden;
@@ -151,6 +151,14 @@ particle {
     height: 25px;
     font-family: 'VT323', monospace;
     font-size: 2rem;
+}
+
+.description {
+    white-space: nowrap;
+}
+
+.description-emph{
+    color: blueviolet;
 }
 
 .sprites-zone {
