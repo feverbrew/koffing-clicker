@@ -45,8 +45,10 @@ function saveData() {
     localStorage.setItem("clickCount", clickCount);
     buildings.forEach( b => {
         localStorage.setItem(b.name+"Count",b.count);
+        localStorage.setItem(b.evolvesInto+"Count", b.evoCount);
     });
     localStorage.setItem("bgColor", window.getComputedStyle(document.body,null).getPropertyValue('background-color'));
+    localStorage.setItem("boughtUpgrades", boughtUpgrades);
     localStorage.setItem("evolutions", EVOLUTIONS);
     var savepopup = document.getElementById("snackbar");
     savepopup.className = "show";

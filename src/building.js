@@ -37,7 +37,7 @@ class Building {
         return Math.round( (this.count * this.efficiency * this.modifiers() + this.evoCount * this.count * 0.4)*100 )/100;
     }
     calcCost() {
-        return Math.round(this.baseCost * Math.pow(1.2, this.count) );
+        return Math.round(this.baseCost * Math.pow(1.5, this.count) );
     }
     buy() {
         if (gasCount >= this.calcCost()){
@@ -75,16 +75,15 @@ class Building {
             let container = document.getElementsByClassName(this.spriteName + " sprites")[0];
             container.insertBefore(evoSprite,container.firstChild);
             this.evoCount += 1;
-            localStorage.setItem(this.evolvesInto+"Count", this.evoCount);
     }
 }
 
 // Initialize buildings
 const buildings = [
-    new Building("Koffings", koffingCount, "koffings", 0.5, 10, "weezing", 35, weezingCount),
-    new Building("Ekans", ekansCount, "ekans", 1.0, 25, "arbok", 22, arbokCount),
-    new Building("Meowth", meowthCount, "meowth", 3, 50, null, null, 0),
-    new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 10, 150, null, null, 0),
+    new Building("Koffings", koffingCount, "koffings", 0.1, 10, "weezing", 35, weezingCount),
+    new Building("Ekans", ekansCount, "ekans", 0.5, 25, "arbok", 22, arbokCount),
+    new Building("Meowth", meowthCount, "meowth", 1, 50, null, null, 0),
+    new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 5, 150, null, null, 0),
 ];
 
 

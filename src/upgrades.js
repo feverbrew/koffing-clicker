@@ -21,7 +21,6 @@ class Upgrade {
         if (gasCount >= this.cost){
             this.bought = true;
             boughtUpgrades.push(this.name);
-            localStorage.setItem("boughtUpgrades", boughtUpgrades);
             updateGasCount(-this.cost);
             calculateGasPerSecond();
             animateGPSMeter();
@@ -51,6 +50,13 @@ var upgradesAll = [
 
 // Determine which upgrades are available. Could probably do optimization with the bought attribute.
 var upgradesAvailable = upgradesAll.filter(u => !(boughtUpgrades.includes(u.name)));
+
+// Remember which upgrades have been bought.
+upgradesAll.forEach(u => {
+    if (boughtUpgrades.includes(u.name)) {
+        u.bought = true;
+    }
+});
 
 // Draws the upgrades on the screen and sets the function to delete them when bought
 // Also creates the upgrade tooltip hover
