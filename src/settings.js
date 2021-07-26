@@ -14,7 +14,10 @@ save.onclick = saveData;
 
 // Going to stats should also save game
 const stats = document.getElementById('open-stats');
-stats.onclick = saveData;
+stats.onclick = function() {
+    beforeunload();
+    saveData();
+}
 
 // Auto save feature and setting (on by default) EVERY 5 MINUTES
 var autosave = setInterval(saveData, 800000);
@@ -48,6 +51,7 @@ function saveData() {
     localStorage.setItem("gasCount", gasCount);
     localStorage.setItem("totalGas", totalGas);
     localStorage.setItem("clickCount", clickCount);
+    localStorage.setItem("playTime", playTime);
     buildings.forEach( b => {
         localStorage.setItem(b.name+"Count",b.count);
     });

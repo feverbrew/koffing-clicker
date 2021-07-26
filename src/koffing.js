@@ -126,5 +126,3 @@ function createParticle(x, y) {
         particle.remove();
     };
 }
-
-export { playTime, clickCount, totalGas };
