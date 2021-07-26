@@ -1,4 +1,3 @@
-import { gasCount } from './koffing.js'
 
 // Building class
 class Building {
