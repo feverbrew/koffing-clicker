@@ -1,4 +1,5 @@
-import { clickCount, gasCount } from './koffing.js';
+import { clickCount, gasCount } from './koffing';
+import { buildings } from "./building";
 
 // Achievement class
 class Achievement {
