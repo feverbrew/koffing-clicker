@@ -1,3 +1,4 @@
+import { clickCount, gasCount } from './koffing.js';
 
 // Achievement class
 class Achievement {
