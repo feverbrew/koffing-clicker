@@ -1,4 +1,12 @@
 
+// Loading building count
+var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
+var ekansCount = parseInt(localStorage.getItem("EkansCount")) || 0;
+var meowthCount = parseInt(localStorage.getItem("MeowthCount")) || 0;
+var wobbuffetCount = parseInt(localStorage.getItem("WobbuffetCount")) || 0;
+var weezingCount = parseInt(localStorage.getItem("weezingCount")) || 0;
+var arbokCount = parseInt(localStorage.getItem("arbokCount")) || 0;
+
 var EVOLUTIONS = localStorage.getItem("evolutions") || 0;
 // Load upgrades
 var boughtUpgrades = localStorage.getItem("boughtUpgrades") || [];
