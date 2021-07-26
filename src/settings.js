@@ -1,6 +1,3 @@
-import { gasCount, totalGas, clickCount } from "./koffing";
-import { buildings } from "./building";
-import { EVOLUTIONS } from "./upgrades"
 
 // Grab the settings menu
 const menu = document.getElementsByClassName('settings menu')[0]

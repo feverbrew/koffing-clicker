@@ -1,5 +1,4 @@
-import { gasCount } from "./koffing";
-import { koffingCount, ekansCount, meowthCount, wobbuffetCount, weezingCount, arbokCount } from "./upgrades";
+import { gasCount } from './koffing.js'
 
 // Building class
 class Building {
@@ -188,5 +187,3 @@ function animateGPSMeter() {
     gasPerSecondMeterLabel.classList.add("wave-text-class");
     setTimeout(function() {gasPerSecondMeterLabel.classList.remove("wave-text-class")}, 4500);
 }
-
-export { buildings, updateGasCount };

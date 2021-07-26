@@ -1,5 +1,3 @@
-import { clickCount } from "./koffing";
-import { updateGasCount } from "./building";
 
 // Loading building count
 var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
@@ -168,5 +166,3 @@ function activateEvolutions() {
         }
     })
 }
-
-export { EVOLUTIONS, koffingCount, ekansCount, meowthCount, wobbuffetCount, weezingCount, arbokCount };
