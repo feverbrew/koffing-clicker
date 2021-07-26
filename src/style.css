@@ -203,9 +203,10 @@ particle {
     100% { transform: translate(-100%, 0); }
 }
 
-.settings.menu {
+.lower-menu-bar {
     position: fixed;
     bottom:10px;
+    display: flex;
 }
 
 .setting.important {

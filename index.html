@@ -3,9 +3,9 @@
     <head>
         <title>Koffing Clicker v1.0</title>
         <link rel="stylesheet" href="src/style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFZTYBC1ZG"></script>
         <script>
@@ -42,15 +42,22 @@
                 </div>
             </div>
             <div class="achievements marquee"></div>
-            <div class="settings menu">
-                <button id="open-settings" class="open settings">Settings</button>
+            <div class="lower-menu-bar">
+                <div class="settings menu">
+                    <button id="open-settings" class="open settings">Settings</button>
+                </div>
+                <div class="stats-page-link">
+                    <a href="./stats.html">
+                        <button id="open-stats" class="open stats">Statistics</button>
+                    </a>
+                </div>
             </div>
             <div id="snackbar">
                 Game Saved
             </div>
         </div>
     </body>
-    <script src="src/koffing.js"></script>
+    <script type="module" src="src/koffing.js"></script>
     <script src="src/upgrades.js"></script>
     <script src="src/building.js"></script>
     <script src="src/achievement.js"></script>

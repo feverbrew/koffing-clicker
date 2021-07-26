@@ -153,6 +153,7 @@ function bgAnimation() {
 function gasPerSecond() {
     var GPS = calculateGasPerSecond();
     gasCount += GPS;
+    totalGas += GPS;
     gasCount = Math.round(gasCount*100)/100;
     gas.innerText = gasCount;
     GPS = Math.round(GPS*100)/100;
