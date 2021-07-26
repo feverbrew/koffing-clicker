@@ -119,4 +119,4 @@ function createParticle(x, y) {
     };
 }
 
-export { playTime, clickCount, totalGas };
+export { playTime, clickCount, gasCount, totalGas };
