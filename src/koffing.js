@@ -5,6 +5,14 @@ var clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
 var totalGas = parseInt(localStorage.getItem("totalGas")) || 0;
 var playTime = parseInt(localStorage.getItem("playTime")) || 0;
 
+// Loading building count
+var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
+var ekansCount = parseInt(localStorage.getItem("EkansCount")) || 0;
+var meowthCount = parseInt(localStorage.getItem("MeowthCount")) || 0;
+var wobbuffetCount = parseInt(localStorage.getItem("WobbuffetCount")) || 0;
+var weezingCount = parseInt(localStorage.getItem("weezingCount")) || 0;
+var arbokCount = parseInt(localStorage.getItem("arbokCount")) || 0;
+
 // Initialize dynamic elements
 let gas = document.getElementById('gas-counter');
 let koffingClick = document.getElementById('the-koffing'); // Some jerk on the internet told me to put a . before the-koffing. They lied.
