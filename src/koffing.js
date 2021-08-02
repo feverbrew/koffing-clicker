@@ -2,6 +2,16 @@
 // Initialize the gas count from local storage; or if unable to find, with 0
 var gasCount = parseInt(localStorage.getItem("gasCount")) || 0;
 var clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
+var totalGas = parseInt(localStorage.getItem("totalGas")) || 0;
+var playTime = parseInt(localStorage.getItem("playTime")) || 0;
+
+// Loading building count
+var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
+var ekansCount = parseInt(localStorage.getItem("EkansCount")) || 0;
+var meowthCount = parseInt(localStorage.getItem("MeowthCount")) || 0;
+var wobbuffetCount = parseInt(localStorage.getItem("WobbuffetCount")) || 0;
+var weezingCount = parseInt(localStorage.getItem("weezingCount")) || 0;
+var arbokCount = parseInt(localStorage.getItem("arbokCount")) || 0;
 
 // Initialize dynamic elements
 let gas = document.getElementById('gas-counter');
@@ -12,7 +22,7 @@ koffingClick.onclick = incrementCounter;
 gas.innerText = gasCount;
 
 // New player message
-if (gasCount == 0) {
+if (totalGas == 0) {
     alert("Welcome to Koffing Clicker! Click on Koffing to begin collecting gas.");
 }
 
@@ -21,9 +31,37 @@ if (document.body.animate) {
     koffingClick.addEventListener('click', poof);
 }
 
+// Following code courtesy of martpie on stackoverflow!
+let startDate = new Date();
+
+const focus = function() {
+    startDate = new Date();
+};
+
+const blur = function() {
+    const endDate = new Date();
+    const spentTime = endDate.getTime() - startDate.getTime();
+    playTime += spentTime;
+};
+
+const beforeunload = function() {
+    const endDate = new Date();
+    const spentTime = endDate.getTime() - startDate.getTime();
+    playTime += spentTime;
+
+    // playtime contains the time spent on page in milliseconds
+};
+
+window.addEventListener('focus', focus);
+window.addEventListener('blur', blur);
+window.addEventListener('beforeunload', beforeunload);
+
+// End martpie code
+
 // Gas count incrementer (called from the HTML input)
 function incrementCounter() {
     gasCount += clickMod();
+    totalGas += clickMod();
     clickCount++;
     gas.innerText = gasCount;
 }

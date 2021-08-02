@@ -24,11 +24,11 @@ class Achievement {
 const achievements = [
     new Achievement("100 Clicks", "You clicked Koffing 100 times!", 
         function() {
-            return clickCount > 100;
+            return clickCount >= 100;
         }),
     new Achievement("1000 Gas", "You made 1000 gas!",
         function() {
-            return gasCount > 1000;
+            return gasCount >= 1000;
         }),
     new Achievement("1st Building", "You bought a building!",
         function() {
@@ -39,6 +39,24 @@ const achievements = [
     new Achievement("1st Upgrade", "You bought an upgrade!",
         function() {
             return boughtUpgrades.length > 0
+        }),
+    new Achievement("10th Building", "You bought your 10th building!",
+        function() {
+            let c = 0;
+            buildings.forEach( b => {
+                c += b.count;
+            });
+            return c >= 10;
+        }),
+    new Achievement("10,000 Gas", "You made 10,000 Gas!",
+        function() {
+            return gasCount > 10000;
+        }),
+    new Achievement("One of Each", "Gotta catch 'em all",
+        function(){
+            return buildings.every( b => {
+                return b.count > 0;
+            });
         })
 ];
 

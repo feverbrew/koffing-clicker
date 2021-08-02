@@ -1,12 +1,4 @@
 
-// Loading building count
-var koffingCount = parseInt(localStorage.getItem("KoffingsCount")) || 0;
-var ekansCount = parseInt(localStorage.getItem("EkansCount")) || 0;
-var meowthCount = parseInt(localStorage.getItem("MeowthCount")) || 0;
-var wobbuffetCount = parseInt(localStorage.getItem("WobbuffetCount")) || 0;
-var weezingCount = parseInt(localStorage.getItem("weezingCount")) || 0;
-var arbokCount = parseInt(localStorage.getItem("arbokCount")) || 0;
-
 // Building class
 class Building {
     constructor(name, count, spriteName, efficiency, baseCost, evolvesInto, evolvesAt, evoCount) {
@@ -44,6 +36,7 @@ class Building {
             updateGasCount(-this.calcCost());
             this.createSprite();
             this.count += 1;
+            window[`${this.spriteName}Count`] = this.count;
             if (EVOLUTIONS && this.evolvesInto && (this.count - this.evolvesAt*this.evoCount >= this.evolvesAt)){
                 this.evolve();
             }
@@ -159,6 +152,7 @@ function bgAnimation() {
 function gasPerSecond() {
     var GPS = calculateGasPerSecond();
     gasCount += GPS;
+    totalGas += GPS;
     gasCount = Math.round(gasCount*100)/100;
     gas.innerText = gasCount;
     GPS = Math.round(GPS*100)/100;

@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Koffing Clicker v0.1</title>
+        <title>Koffing Clicker v1.0</title>
         <link rel="stylesheet" href="src/style.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YFZTYBC1ZG"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-YFZTYBC1ZG');
+        </script>
     </head>
     <body>
         <div class="root">
@@ -13,7 +22,7 @@
 
             <div class="main-elements">
                 <div class="koffing-zone">
-                    <input type="image" id="the-koffing" class="koffing" src="./images/koffing.svg" />
+                    <input type="image" id="the-koffing" class="cookie" src="./images/koffing.svg" />
                     <h3 id="gas-counter-label"><span id="gas-counter">0</span> Gas</h3>
                     <h4 id="gas-per-second-meter-label"><span id="gas-per-second-meter">0</span> gas per second</h4>
                 </div>
@@ -26,16 +35,24 @@
                 <div class="buildings"></div>
 
                 <div class="sprites-zone">
-                    <div class="koffings sprites"></div>
+                    <div class="koffing sprites"></div>
                     <div class="ekans sprites"></div>
                     <div class="meowth sprites"></div>
                     <div class="wobbuffet sprites"></div>
                 </div>
             </div>
             <div class="achievements marquee"></div>
-            <div class="settings menu">
-                <button id="open-settings" class="open settings">Settings</button>
+            <div class="lower-menu-bar">
+                <div class="settings menu">
+                    <button id="open-settings" class="open settings">Settings</button>
+                </div>
+                <div class="stats-page-link">
+                    <a href="./stats.html">
+                        <button id="open-stats" class="open stats">Statistics</button>
+                    </a>
+                </div>
             </div>
+            <a href="https://www.github.com/feverbrew/koffing-clicker/" target="_blank" rel="noopener noreferrer" class="credit">Created by Lucas Culley</a>
             <div id="snackbar">
                 Game Saved
             </div>
