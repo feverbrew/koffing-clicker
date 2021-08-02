@@ -98,7 +98,7 @@ class Upgrade {
 // Define the available upgrades:
 const upgradesAll = [
     new Upgrade("Evolutions", 200, "./images/evolutions_upgrade.png", "Allows Koffings and Ekans to evolve.", "<i>These guys needed some extra encouragement.</i>", "evolve1", false,
-                function(){return (koffingCount >= 10 && ekansCount >= 10)}
+                function(){return (koffingsCount >= 10 && ekansCount >= 10)}
                 ),
     new Upgrade("Lumpier Koffing", 100, "./images/lumps.png", "Clicking Koffing is <span class='description-emph'>twice</span> as effective.", "<i>Gives Koffing twice as many lumps to pump out gas with.</i>", "clickmod", false,
                 function(){return (clickCount >= 100)}
@@ -107,10 +107,10 @@ const upgradesAll = [
                 function(){return (ekansCount >= 10)}
                 ),
     new Upgrade("Bigger Koffings", 50, "./images/big_koffing.png", "Koffings produce <span class='description-emph'>twice</span> as much gas.", "<i>Makes your little Koffings a little bit bigger.</i>","Koffingsmod", false,
-                function(){return (koffingCount >= 10)}
+                function(){return (koffingsCount >= 10)}
                 ),
     new Upgrade("More Teeth", 500, "./images/koffing_teeth.png", "Koffings produce <span class='description-emph'>twice</span> as much gas.", "<i>More teeth means faster eating; which means more gas.</i>","Koffingsmod", false,
-                function(){return (koffingCount >= 25)}
+                function(){return (koffingsCount >= 25)}
                 ),
     new Upgrade("Longer Bodies", 1000, "./images/long_body.png", "Ekans produce <span class='description-emph'>twice</span> as much gas.", "<i>Definitely not the same as longer tails.</i>","Ekansmod", false,
                 function(){return (ekansCount >= 25)}

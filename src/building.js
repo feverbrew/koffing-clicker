@@ -73,7 +73,7 @@ class Building {
 
 // Initialize buildings
 const buildings = [
-    new Building("Koffings", koffingCount, "koffings", 0.1, 10, "weezing", 35, weezingCount),
+    new Building("Koffings", koffingsCount, "koffings", 0.1, 10, "weezing", 35, weezingCount),
     new Building("Ekans", ekansCount, "ekans", 0.5, 25, "arbok", 22, arbokCount),
     new Building("Meowth", meowthCount, "meowth", 1, 50, null, null, 0),
     new Building("Wobbuffet", wobbuffetCount, "wobbuffet", 5, 150, null, null, 0),
