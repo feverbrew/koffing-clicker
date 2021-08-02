@@ -209,6 +209,12 @@ particle {
     display: flex;
 }
 
+.credit {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
 .setting.important {
     color:red;
 }
