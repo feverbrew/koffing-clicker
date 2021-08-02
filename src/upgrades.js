@@ -24,7 +24,6 @@ class Upgrade {
         if (gasCount >= this.cost){
             this.bought = true;
             boughtUpgrades.push(this.name);
-            localStorage.setItem("boughtUpgrades", boughtUpgrades);
             updateGasCount(-this.cost);
             calculateGasPerSecond();
             animateGPSMeter();
