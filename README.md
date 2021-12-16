@@ -20,3 +20,5 @@ This project was inspired by [Cookie Clicker](https://orteil.dashnet.org/cookiec
 - Other forms :eyes:
 - More UI, ability to see achievements and upgrades you've unlocked.
 - More upgrades and buildings
+
+bla blah
